@@ -19,5 +19,8 @@
 .env.production.local
 
 npm-debug.log*
+
+.editorconfig
+
 yarn-debug.log*
 yarn-error.log*
