@@ -1,5 +1,5 @@
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
-import { MenuOutlinedIcon } from "@mui/icons-material";
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import { tokens } from "../theme";
 
 const CollapsedMenu = ({ setIsCollapsed }) => {

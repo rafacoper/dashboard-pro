@@ -1,4 +1,5 @@
 import { Box, Typography, useTheme } from "@mui/material";
+import Avatar from '@mui/material/Avatar';
 import { tokens } from "../theme";
 
 const ExpandedMenu = () => {
@@ -8,11 +9,10 @@ const ExpandedMenu = () => {
   return (
     <Box mb="25px">
       <Box display="flex" justifyContent="center" alignItems="center">
-        <img
+        <Avatar
           alt="profile-user"
-          width="100px"
-          height="100px"
-          src={`../../../public/assets/user.png`}
+          sx={{ width: 40, heigh: 40 }}
+          src={`../../public/assets/rfl-sprr.png`}
           style={{ cursor: "pointer", borderRadius: "50%" }}
         />
       </Box>

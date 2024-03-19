@@ -3,7 +3,7 @@ import { tokens } from "../theme";
 import { MenuItem } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 
-const Item = (props) => {
+const SideBarItem = (props) => {
   const { title, to, icon, selected, setSelected } = props;
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -22,4 +22,4 @@ const Item = (props) => {
   );
 };
 
-export default Item;
+export default SideBarItem;

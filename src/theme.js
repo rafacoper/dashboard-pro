@@ -2,8 +2,8 @@ import { createContext, useState, useMemo } from "react";
 import { createTheme } from "@mui/material/styles";
 
 // color design tokens export
-export const tokens = (mode) => ({
-  ...(mode === "dark"
+export const tokens = (mode) =>
+  mode === "dark"
     ? {
         grey: {
           100: "#e0e0e0",
@@ -117,78 +117,39 @@ export const tokens = (mode) => ({
           800: "#c3c6fd",
           900: "#e1e2fe",
         },
-      }),
-});
+      };
 
 // mui theme settings
 export const themeSettings = (mode) => {
   const colors = tokens(mode);
-  return {
-    palette: {
-      mode: mode,
-      ...(mode === "dark"
-        ? {
-            // palette values for dark mode
-            primary: {
-              main: colors.primary[500],
-            },
-            secondary: {
-              main: colors.greenAccent[500],
-            },
-            neutral: {
-              dark: colors.grey[700],
-              main: colors.grey[500],
-              light: colors.grey[100],
-            },
-            background: {
-              default: colors.primary[500],
-            },
-          }
-        : {
-            // palette values for light mode
-            primary: {
-              main: colors.primary[100],
-            },
-            secondary: {
-              main: colors.greenAccent[500],
-            },
-            neutral: {
-              dark: colors.grey[700],
-              main: colors.grey[500],
-              light: colors.grey[100],
-            },
-            background: {
-              default: "#fcfcfc",
-            },
-          }),
+  const modeSpecificPalette = {
+    mode: mode,
+    primary: {
+      main: colors.primary[mode === "dark" ? 500 : 100],
     },
+    secondary: {
+      main: colors.greenAccent[500],
+    },
+    neutral: {
+      dark: colors.grey[700],
+      main: colors.grey[500],
+      light: colors.grey[100],
+    },
+    background: {
+      default: mode === "dark" ? colors.primary[500] : "#fcfcfc",
+    },
+  };
+  return {
+    palette: modeSpecificPalette,
     typography: {
       fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
       fontSize: 12,
-      h1: {
-        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
-        fontSize: 40,
-      },
-      h2: {
-        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
-        fontSize: 32,
-      },
-      h3: {
-        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
-        fontSize: 24,
-      },
-      h4: {
-        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
-        fontSize: 20,
-      },
-      h5: {
-        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
-        fontSize: 16,
-      },
-      h6: {
-        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
-        fontSize: 14,
-      },
+      h1: { fontFamily: "Source Sans Pro", fontSize: 40 },
+      h2: { fontFamily: "Source Sans Pro", fontSize: 32 },
+      h3: { fontFamily: "Source Sans Pro", fontSize: 24 },
+      h4: { fontFamily: "Source Sans Pro", fontSize: 20 },
+      h5: { fontFamily: "Source Sans Pro", fontSize: 16 },
+      h6: { fontFamily: "Source Sans Pro", fontSize: 14 },
     },
   };
 };
@@ -210,5 +171,6 @@ export const useMode = () => {
   );
 
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+
   return [theme, colorMode];
 };
