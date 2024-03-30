@@ -1,6 +1,11 @@
+import Header from "../../components/Header"
+
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <div>
+      Dashboard
+      <Header />
+    </div>
   )
 }
 
