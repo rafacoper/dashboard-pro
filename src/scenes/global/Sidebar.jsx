@@ -38,6 +38,7 @@ const menuItems = [
   { title: "Geography Chart", to: "/geography", icon: <MapOutlinedIcon /> },
 ];
 
+
 const MySidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);

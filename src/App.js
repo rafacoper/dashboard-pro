@@ -5,6 +5,7 @@ import MySidebar from "./scenes/global/Sidebar";
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./scenes/dashboard";
+import Team from "./scenes/team";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -20,6 +21,7 @@ function App() {
             <Topbar setSidebar={setSidebar} />
             <Routes>
               <Route path="/" element={<Dashboard />} />
+              <Route path="/team" element={<Team />} />
             </Routes>
           </main>
         </div>
