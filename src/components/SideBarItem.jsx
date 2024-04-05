@@ -7,6 +7,15 @@ const SideBarItem = (props) => {
   const { title, to, icon, selected, setSelected } = props;
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const linkStyle = {
+    textDecoration: 'none',
+    color: colors.grey[100],
+    display: 'flex', // flex layout to align icon and text
+    alignItems: 'center',
+    width: '100%', // full width to increase clickable area
+  };
+
   return (
     <MenuItem
       active={selected === title}
@@ -16,8 +25,9 @@ const SideBarItem = (props) => {
       onClick={() => setSelected(title)}
       icon={icon}
     >
-      <Typography>{title}</Typography>
-      <Link to={to} />
+      <Link to={to} style={linkStyle}>
+        <Typography>{title}</Typography>
+      </Link>
     </MenuItem>
   );
 };
